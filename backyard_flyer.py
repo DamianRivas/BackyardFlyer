@@ -83,10 +83,6 @@ class BackyardFlyer(Drone):
         
     def check_waypoint_proximity(self):
         acc_factor = 0.1
-        # match_north = abs(self.local_position[0] - self.target_position[0]) <= acc_factor
-        # match_east = abs(self.local_position[1] - self.target_position[1]) <= acc_factor
-        # match_alt = abs(-1.0 * self.local_position[2] - self.target_position[2]) <= acc_factor
-        # return match_north and match_east and match_alt
         current_pos = self.local_position
         current_pos[2] *= -1.0
         return np.allclose(current_pos, self.target_position, atol=acc_factor)
